@@ -3,9 +3,16 @@ const { Sequelize } = require("sequelize");
 const fs = require('fs');
 const path = require('path');
 
-const { DATABASE, USERNAME, PASSWORD } = process.env;
+const { DATABASE, USERNAME, PASSWORD, HOSTNAME } = process.env;
 
 const sequelize = new Sequelize(DATABASE, USERNAME, PASSWORD ,{
+  host: HOSTNAME,
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    }},
   logging: false, 
   native: false, 
 });
