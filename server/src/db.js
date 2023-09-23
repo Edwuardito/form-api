@@ -5,7 +5,7 @@ const path = require('path');
 
 const { DATABASE } = process.env;
 
-const sequelize = new Sequelize(`${DATABASE}`, {
+const sequelize = new Sequelize(DATABASE, USERNAME, PASSWORD ,{
   logging: false, 
   native: false, 
 });
